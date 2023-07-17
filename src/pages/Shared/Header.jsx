@@ -44,7 +44,7 @@ const Header = () => {
   return (
     <div className="w-full md:max-w-[1440px] mx-auto px-4 lg:px-5">
       {/* Header Top */}
-      <div className="flex justify-end md:justify-between items-center py-[7px]">
+      <div className="flex justify-center md:justify-between items-center py-[7px]">
         <p className="hidden md:block md:text-sm text-[#666666]">
           Assignment of AIDE
         </p>
