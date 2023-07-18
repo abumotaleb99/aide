@@ -1,11 +1,13 @@
 import React from "react";
 import Slider from "./Slider";
+import TrendingProducts from "./TrendingProducts";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Slider />
-    </div>
+      <TrendingProducts></TrendingProducts>
+    </>
   );
 };
 
