@@ -34,7 +34,8 @@ const Login = () => {
             setError("Invalid password.");
           } else {
             localStorage.setItem("user", JSON.stringify(data));
-            navigate(from, { replace: true });
+            // navigate(from, { replace: true });
+            navigate("/");
             window.location.reload();
           }
         }

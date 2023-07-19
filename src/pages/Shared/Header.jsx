@@ -22,8 +22,6 @@ const Header = () => {
     window.location.reload();
   };
 
-  console.log(user);
-
   const navItems = (
     <>
       <li className="flex items-center gap-1">
@@ -106,17 +104,17 @@ const Header = () => {
         </Link>
 
         {/* Search Bar */}
-        <div class="relative w-full md:max-w-md max-w-xs mx-auto rounded-md hidden lg:block">
-          <div class="absolute top-1/2 left-0 -translate-y-1/2 ml-3">
+        <div className="relative w-full md:max-w-md max-w-xs mx-auto rounded-md hidden lg:block">
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 ml-3">
             <FaSearch className="text-lg text-[#008ECC]" />
           </div>
-          <div class="absolute top-1/2 right-0 -translate-y-1/2 mr-3">
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 mr-3">
             <FaBars className="text-xl text-[#008ECC]" />
           </div>
           <input
             type="text"
             placeholder="Search essentials, groceries and more..."
-            class="w-full px-4 py-2 rounded-md pl-10 pr-10 bg-[#F3F9FB] border border-[#008ECC] focus:border-[#4D90FE] focus:outline-none"
+            className="w-full px-4 py-2 rounded-md pl-10 pr-10 bg-[#F3F9FB] border border-[#008ECC] focus:border-[#4D90FE] focus:outline-none"
           />
         </div>
 
@@ -150,17 +148,17 @@ const Header = () => {
                 <nav>
                   <ul className="space-y-4">
                     <li>
-                      <div class="relative w-full md:max-w-md max-w-xs rounded-md">
-                        <div class="absolute top-1/2 left-0 -translate-y-1/2 ml-3">
+                      <div className="relative w-full md:max-w-md max-w-xs rounded-md">
+                        <div className="absolute top-1/2 left-0 -translate-y-1/2 ml-3">
                           <FaSearch className="text-lg text-[#008ECC]" />
                         </div>
-                        <div class="absolute top-1/2 right-0 -translate-y-1/2 mr-3">
+                        <div className="absolute top-1/2 right-0 -translate-y-1/2 mr-3">
                           <FaBars className="text-xl text-[#008ECC]" />
                         </div>
                         <input
                           type="text"
                           placeholder="Search..."
-                          class="w-full px-4 py-2 rounded-md pl-10 pr-10 bg-[#F3F9FB] border border-[#008ECC] focus:border-[#4D90FE] focus:outline-none"
+                          className="w-full px-4 py-2 rounded-md pl-10 pr-10 bg-[#F3F9FB] border border-[#008ECC] focus:border-[#4D90FE] focus:outline-none"
                         />
                       </div>
                     </li>

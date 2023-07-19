@@ -7,7 +7,9 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loggedUser = localStorage.getItem("user");
+    const userJSON = localStorage.getItem("user");
+    const loggedUser = JSON.parse(userJSON);
+
     if (loggedUser) {
       setUser(loggedUser);
       setLoading(false);
