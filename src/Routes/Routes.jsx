@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
+import DashboardHome from "../pages/Dashboard/Home/DashboardHome";
+import AllProducts from "../pages/Dashboard/Products/AllProducts";
 
 const router = createBrowserRouter([
   {
@@ -23,10 +25,20 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <PrivateRoute>
-        <DashboardLayout></DashboardLayout>
-      </PrivateRoute>
+      // <PrivateRoute>
+      <DashboardLayout></DashboardLayout>
+      // </PrivateRoute>
     ),
+    children: [
+      {
+        path: "",
+        element: <DashboardHome></DashboardHome>,
+      },
+      {
+        path: "all-products",
+        element: <AllProducts></AllProducts>,
+      },
+    ],
   },
 ]);
 

@@ -7,7 +7,7 @@ import {
   FaNotesMedical,
   FaUser,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const DashboardLayout = () => {
@@ -52,7 +52,10 @@ const DashboardLayout = () => {
                 </Link>
               </li>
               <li>
-                <Link to="" className="flex items-center text-[#3A3541DE]">
+                <Link
+                  to="all-products"
+                  className="flex items-center text-[#3A3541DE]"
+                >
                   <FaCopy className="text-xl" />
                   <p className="font-normal ml-3">All Product</p>
                 </Link>
@@ -62,7 +65,7 @@ const DashboardLayout = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
+      {/* Main */}
       <main className="flex-1">
         {/* Navbar */}
         <div className="bg-[#F4F5FA] flex justify-between md:justify-end items-center px-4 lg:px-5">
@@ -84,7 +87,10 @@ const DashboardLayout = () => {
             </div>
           </div>
         </div>
-        <h2>Main COntent</h2>
+        {/* Main Content */}
+        <div className="bg-[#F4F5FA] min-h-screen md:ml-64 px-4 lg:px-5">
+          <Outlet></Outlet>
+        </div>
       </main>
     </div>
   );
