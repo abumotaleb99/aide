@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import {
@@ -10,9 +10,19 @@ import {
   FaSearch,
   FaBars,
 } from "react-icons/fa";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { user } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
+
+  console.log(user);
 
   const navItems = (
     <>
@@ -24,13 +34,32 @@ const Header = () => {
       </li>
       <li className="flex items-center gap-1">
         <FaUser className="text-lg text-[#008ECC]" />
-        <NavLink to="/sign-up" className="text-base text-[#666666] font-bold">
-          Sign Up
-        </NavLink>
-        /
-        <NavLink to="/sign-in" className="text-base text-[#666666] font-bold">
-          Sign In
-        </NavLink>
+        {user ? (
+          <>
+            <button
+              onClick={handleLogOut}
+              className="text-base text-[#666666] font-bold"
+            >
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink
+              to="/sign-up"
+              className="text-base text-[#666666] font-bold"
+            >
+              Sign Up
+            </NavLink>
+            /
+            <NavLink
+              to="/sign-in"
+              className="text-base text-[#666666] font-bold"
+            >
+              Sign In
+            </NavLink>
+          </>
+        )}
       </li>
       <li className="flex items-center gap-1">
         <FaUser className="text-lg text-[#008ECC]" />
