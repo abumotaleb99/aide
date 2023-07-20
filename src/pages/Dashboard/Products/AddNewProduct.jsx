@@ -87,7 +87,7 @@ const AddNewProduct = () => {
           </div>
           <div className="mb-2 md:grid grid-cols-2 gap-5">
             <div>
-              <label className=" text-base font-semibold">Weight</label>
+              <label className=" text-base font-semibold">Weight (Liter)</label>
               <input
                 type="text"
                 className="w-full border rounded-md focus:outline-none  px-3 py-2 mt-2"

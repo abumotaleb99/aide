@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaUpload } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const AllProducts = () => {
+  useEffect(() => {
+    document.title = "AIDE | All Products";
+  }, []);
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/all-products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  }, []);
+
   return (
     <div className="">
       <h2 className="text-3xl text-[#975EFE] font-medium py-6">All Products</h2>
@@ -67,32 +81,38 @@ const AllProducts = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="px-4 py-4 border-b">
-                <p className="text-sm text-[#3A3541AD] font-normal">Image</p>
-              </td>
-              <td className="px-4 py-4 border-b">
-                <p className="text-sm text-[#3A3541AD] font-normal">
-                  Rupdhanya soyabin oil
-                </p>
-              </td>
-              <td className="px-4 py-4 border-b">
-                <p className="text-sm text-[#3A3541AD] font-normal">8 Liter</p>
-              </td>
-              <td className="px-4 py-4 border-b">
-                <p className="text-sm text-[#3A3541AD] font-normal">540.00</p>
-              </td>
-              <td className="px-4 py-4 border-b">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="1em"
-                  viewBox="0 0 128 512"
-                  className="cursor-pointer"
-                >
-                  <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
-                </svg>
-              </td>
-            </tr>
+            {products?.map((product) => (
+              <tr>
+                <td className="px-4 py-4 border-b">
+                  <img src={product?.image} className="h-12" alt="" />
+                </td>
+                <td className="px-4 py-4 border-b">
+                  <p className="text-sm text-[#3A3541AD] font-normal">
+                    {product?.product_name}
+                  </p>
+                </td>
+                <td className="px-4 py-4 border-b">
+                  <p className="text-sm text-[#3A3541AD] font-normal">
+                    {product?.weight} <span>Liter</span>
+                  </p>
+                </td>
+                <td className="px-4 py-4 border-b">
+                  <p className="text-sm text-[#3A3541AD] font-normal">
+                    $ {product?.price}
+                  </p>
+                </td>
+                <td className="px-4 py-4 border-b">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    viewBox="0 0 128 512"
+                    className="cursor-pointer"
+                  >
+                    <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+                  </svg>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
 
