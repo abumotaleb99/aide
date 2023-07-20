@@ -15,11 +15,10 @@ import { AuthContext } from "../../providers/AuthProvider";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
-    localStorage.removeItem("user");
-    window.location.reload();
+    logOut();
   };
 
   const navItems = (

@@ -6,6 +6,12 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const logOut = () => {
+    setLoading(true);
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
+
   useEffect(() => {
     const userJSON = localStorage.getItem("user");
     const loggedUser = JSON.parse(userJSON);
@@ -18,6 +24,7 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    logOut,
     loading,
   };
 

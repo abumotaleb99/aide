@@ -7,7 +7,7 @@ const TrendingProducts = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
 
   useEffect(() => {
-    fetch("products.json")
+    fetch("http://localhost:5000/all-products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaUpload } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaGreaterThan, FaLessThan, FaUpload } from "react-icons/fa";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllProducts = () => {
   useEffect(() => {
@@ -8,17 +8,45 @@ const AllProducts = () => {
   }, []);
 
   const [products, setProducts] = useState([]);
+  let [currentPage, setCurrentPage] = useState(0);
+  const [productsPerPage, setProductsPerPage] = useState(5);
+  const { totalProducts } = useLoaderData();
+
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
+  const pageNumbers = [...Array(totalPages).keys()];
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
-  }, []);
+    async function fetchData() {
+      const response = await fetch(
+        `http://localhost:5000/products?page=${currentPage}&limit=${productsPerPage}`
+      );
+
+      const data = await response.json();
+      setProducts(data);
+    }
+    fetchData();
+  }, [currentPage, productsPerPage]);
+
+  const options = [5, 10, 20];
+  function handleSelectChange(event) {
+    setProductsPerPage(parseInt(event.target.value));
+    setCurrentPage(0);
+  }
+
+  const handlePrevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
 
   return (
-    <div className="">
+    <div className="mb-5">
       <h2 className="text-3xl text-[#975EFE] font-medium py-6">All Products</h2>
       <div className="bg-white rounded-md shadow-md">
         {/* Header */}
@@ -82,7 +110,7 @@ const AllProducts = () => {
           </thead>
           <tbody>
             {products?.map((product) => (
-              <tr>
+              <tr key={product?._id}>
                 <td className="px-4 py-4 border-b">
                   <img src={product?.image} className="h-12" alt="" />
                 </td>
@@ -117,6 +145,33 @@ const AllProducts = () => {
         </table>
 
         {/* Footer */}
+        <div className="flex justify-end items-center gap-6 p-4">
+          <div className="flex items-center gap-2">
+            <p className="text-base text-[#3A3541AD] font-medium">
+              Rows per page:
+            </p>
+            <select value={productsPerPage} onChange={handleSelectChange}>
+              {options.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <p className="text-base text-[#3A3541DE] font-medium">
+              1-5 of {totalPages}
+            </p>
+          </div>
+          <div className="flex gap-6">
+            <button onClick={handlePrevPage}>
+              <FaLessThan className="text-sm" />
+            </button>
+            <button onClick={handleNextPage}>
+              <FaGreaterThan className="text-sm " />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

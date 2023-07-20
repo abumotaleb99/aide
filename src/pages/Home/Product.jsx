@@ -1,7 +1,7 @@
 import React from "react";
 
 const Product = ({ product }) => {
-  const { id, image, productName, weight, price } = product;
+  const { id, image, product_name, weight, price } = product;
 
   return (
     <div className="bg-white shadow-md flex flex-col justify-between rounded-lg">
@@ -10,7 +10,7 @@ const Product = ({ product }) => {
       </div>
       <div>
         <div className="p-4">
-          <h3 className="text-sm text-[#212121] font-normal">{productName}</h3>
+          <h3 className="text-sm text-[#212121] font-normal">{product_name}</h3>
           <p className="text-xs text-[#828282] font-normal py-2">{weight}</p>
           <p className="text-base text-[#009999]">
             $<span className="font-bold">{price}</span>
