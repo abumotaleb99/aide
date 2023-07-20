@@ -1,5 +1,5 @@
 import React from "react";
-import { FaAd, FaFilePdf, FaFileUpload, FaUpload } from "react-icons/fa";
+import { FaUpload } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const AllProducts = () => {
@@ -38,7 +38,10 @@ const AllProducts = () => {
             </button>
           </div>
 
-          <Link className="text-sm text-white bg-[#975EFE] font-medium uppercase rounded px-8 md:px-11 py-[7px]">
+          <Link
+            to="../add-new-product"
+            className="text-sm text-white bg-[#975EFE] font-medium uppercase rounded px-8 md:px-11 py-[7px]"
+          >
             +Add New Product
           </Link>
         </div>

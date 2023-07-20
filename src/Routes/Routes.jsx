@@ -6,6 +6,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import DashboardHome from "../pages/Dashboard/Home/DashboardHome";
 import AllProducts from "../pages/Dashboard/Products/AllProducts";
+import AddNewProduct from "../pages/Dashboard/Products/AddNewProduct";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "all-products",
         element: <AllProducts></AllProducts>,
+      },
+      {
+        path: "add-new-product",
+        element: <AddNewProduct></AddNewProduct>,
       },
     ],
   },
