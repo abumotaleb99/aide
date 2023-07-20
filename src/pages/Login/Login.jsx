@@ -26,7 +26,7 @@ const Login = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/users/${email}`)
+    fetch(`https://aide-server-green.vercel.app/users/${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data) {

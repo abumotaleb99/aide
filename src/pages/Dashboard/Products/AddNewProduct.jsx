@@ -41,7 +41,7 @@ const AddNewProduct = () => {
             image: imgURL,
           };
 
-          fetch("http://localhost:5000/add-new-product", {
+          fetch("https://aide-server-green.vercel.app/add-new-product", {
             method: "POST",
             headers: {
               "content-type": "application/json",

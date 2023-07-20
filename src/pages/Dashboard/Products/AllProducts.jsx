@@ -18,7 +18,7 @@ const AllProducts = () => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `http://localhost:5000/products?page=${currentPage}&limit=${productsPerPage}`
+        `https://aide-server-green.vercel.app/products?page=${currentPage}&limit=${productsPerPage}`
       );
 
       const data = await response.json();

@@ -7,7 +7,7 @@ const TrendingProducts = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-products")
+    fetch("https://aide-server-green.vercel.app/all-products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
